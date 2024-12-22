@@ -14,8 +14,8 @@ export default async function handler(
     const { question } = req.body;
 
     try {
-      // Udskift med den faktiske endpoint hvor Llama 3.2 er tilgængelig
-      const llamaResponse = await axios.post('https://2477-94-145-243-197.ngrok-free.app/ep_2qa8UGKchDFyYB54hd6uFo9Ii6F', { question });
+      const llamaApiUrl = process.env.LLAMA_API_URL;
+      const llamaResponse = await axios.post(llamaApiUrl!, { question });
 
       const answer = llamaResponse.data.answer;
 
